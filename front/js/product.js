@@ -31,3 +31,5 @@ function addProduct(article) {
   const description = document.getElementById("description");
   description.innerHTML = article.description;
 }
+
+// Ajout au panier

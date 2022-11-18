@@ -1,23 +1,22 @@
+// Données API
 fetch("http://localhost:3000/api/products")
   .then((response) => response.json())
-  .then((data) => {
-    console.log(data);
-    return addProducts(data);
+
+  // Liste de produits depuis le back
+  .then(function (products) {
+    for (let product of products) {
+      // Loop marche pas?
+      // let i = 0;
+      // i < product.length;
+      // i++;
+      document.getElementById(
+        "items"
+      ).innerHTML += `<a href="./product.html?id=${product._id}">
+       <article>
+        <img src="${product.imageUrl}" alt="${product.altTxt}">
+         <h3 class="productName">${product.name}</h3>
+           <p class="productDescription">${product.description}</p>
+      </article>
+           </a>`;
+    }
   });
-
-function addProducts(donnees) {
-  const id = donnees[0]._id;
-  const baliseA = creeBaliseA(id);
-  appendChild(baliseA);
-}
-
-function creeBaliseA(id) {
-  const baliseA = document.createElement("a");
-  baliseA.href = "./product.html?id=" + id;
-  return baliseA;
-}
-
-function appendChild(baliseA) {
-  const items = document.querySelector("#items");
-  items.appendChild(baliseA);
-}

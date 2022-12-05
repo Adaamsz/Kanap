@@ -34,7 +34,7 @@ function addProduct(article) {
     productColors.innerHTML = colors;
   }
 
-  // Récupère tous les data depuis l'api pour les transférer a la variable ligne 6/7 ??
+  // Récupère tous les data depuis l'api pour les transférer a la variable ligne 6/7?
   altText = article.altTxt;
   imgUrl = article.imageUrl;
   itemName = article.name;
@@ -69,14 +69,16 @@ function unvalidCart(color, quantity) {
 function productsId(color, quantity) {
   const productParams = {
     id: productId,
+    name: itemName,
     quantity: Number(quantity),
     color: color,
     price: itemPrice,
     title: itemName,
-    img: imgUrl,
+    imageUrl: imgUrl,
     altTxt: altText,
     description: d,
   };
   localStorage.setItem(productId, JSON.stringify(productParams));
-  window.location.href = "cart.html";
+
+  alert("Article ajouter au panier !");
 }

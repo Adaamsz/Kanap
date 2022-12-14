@@ -2,10 +2,10 @@ const getProductId = () => {
   return new URL(location.href).searchParams.get("id");
 };
 const productId = getProductId();
-if (productId != null) {
-  let itemPrice = 0;
-  let imgUrl, d, altText, itemName;
-}
+// if (productId != null) {
+//   let itemPrice = 0;
+//   let imgUrl, d, altText, itemName;
+// }
 
 fetch(`http://localhost:3000/api/products/${productId}`)
   .then((response) => response.json())
@@ -69,14 +69,14 @@ function unvalidCart(color, quantity) {
 function productsId(color, quantity) {
   const productParams = {
     id: productId,
-    name: itemName,
     quantity: Number(quantity),
     color: color,
-    price: itemPrice,
-    title: itemName,
-    imageUrl: imgUrl,
-    altTxt: altText,
-    description: d,
+    // name: itemName,
+    // price: itemPrice,
+    // title: itemName,
+    // imageUrl: imgUrl,
+    // altTxt: altText,
+    // description: d,
   };
   localStorage.setItem(productId, JSON.stringify(productParams));
 

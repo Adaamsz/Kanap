@@ -110,6 +110,10 @@ function changeQuantity(settings, item) {
     updatePrice(item.id, input.value, item)
   );
 
+  if (item.quantity >= 0) {
+    deleteItemStorage(item);
+  }
+
   quantity.appendChild(input);
   settings.appendChild(quantity);
 }
@@ -118,12 +122,11 @@ function updatePrice(id, newValue, item) {
   const itemToUpdate = cart.find((item) => item.id === id);
   itemToUpdate.quantity = Number(newValue);
   item.quantity = itemToUpdate.quantity;
+  updateStorage(item);
   displayTotalQuantity();
   displayTotalPrice();
-  updateStorage(item);
 }
 
-//Supprime une fois sur deux
 function deleteItemStorage(item) {
   const key = `${item.id}-${item.color}`;
   localStorage.removeItem(key);
